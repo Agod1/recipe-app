@@ -14,7 +14,7 @@ ROOT="$(dirname "${SCRIPT_DIR}")"
 # First check if our image has been built. If not, build it.
 if [[ "$(docker images -q ${IMAGE_NAME}:latest 2> /dev/null)" == "" ]]; then
     echo " ----- Recipe App Image Does Not Exist. Building Now. -----"
-    docker build -t ${IMAGE_NAME} ${ROOT}
+    docker build -t ${IMAGE_NAME} "${ROOT}"
 else
     echo " ----- Recipe App Image Available for Use. -----"
 fi
@@ -24,8 +24,8 @@ echo " ----- Run Recipe application Disposable Container -----"
 docker run \
     -i \
     -t \
-    -p 4200:80 \
-    ${IMAGE_NAME} \
+    -p 8000:8000 \
+    ${IMAGE_NAME}
 
 echo " ----- EXITED from disposable container -----"
 echo " ----- Removing Exited Containers. -----"
