@@ -21,11 +21,13 @@ fi
 
 # Now, depending on whether our services are running or not, link them into our disposable container.
 echo " ----- Run Recipe application Disposable Container -----"
-docker run \
-    -i \
-    -t \
-    -p 8000:8000 \
-    ${IMAGE_NAME}
+# docker run \
+#     -i \
+#     -t \
+#     -p 8000:8000 \
+#     ${IMAGE_NAME}
+
+docker-compose up
 
 echo " ----- EXITED from disposable container -----"
 echo " ----- Removing Exited Containers. -----"
